@@ -1,0 +1,67 @@
+/* -------------------*/
+/* Google fonts import*/
+/* -------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lato:wght@300;400;700;900&family=Montserrat:wght@100;200;300;400;500;700&family=Work+Sans:wght@100;300;500&display=swap");
+
+/* -------------------*/
+/*- OVER ALL STYLES -*/
+/* -------------------*/
+/* -- Asterisk wildcard selector to override default styles added by the browser -- */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* -- Based on Omnifood Project, link in README -- */
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+/* -- heading styles -- */
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  line-height: 4.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ******
+colors:
+rgb(24, 22, 19)
+rgb(82, 70, 59)
+rgb(159, 149, 138)
+rgb(112, 112, 112)
+***** */
+
+/* -------------------*/
+/*- BASE.HTML STYLES -*/
+/* -------------------*/
+
+/* -- HEADER & footer color theme -- */
+.h-f-background-color {
+  background-color: rgb(24, 22, 19);
+  color: #fff;
+}
+
+/* -- FOOTER STYLING -- */
+
+/* -------------------*/
+/*- INDEX.HTML STYLES -*/
+/* -------------------*/
+
+/* -- Hero Section -- */
+.hero-container {
+  max-width: 120rem;
+  background-color: rgb(159, 149, 138);
+  color: #fff;
+}
+
+/* -- blog post on homepage -- */
+.home-blog-posts {
+  max-width: 120rem;
+  background-color: rgb(82, 70, 59);
+  color: #fff;
+}
