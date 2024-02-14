@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <p>Hello World!</p>
-</body>
-</html>
+{% extends "base.html" %} {% block title %} Home {% endblock %}
+<!-- fix this code so it doesn't break-->
+{% block content %}
+<section class="hero-section">
+  <div class="hero">
+    <p>Here will be a hero</p>
+  </div>
+</section>
+<section class="home-blog-posts">
+  <p>Here will be one blogpost to visitors to see.</p>
+</section>
+{% endblock %}
