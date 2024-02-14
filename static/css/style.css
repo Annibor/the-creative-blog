@@ -65,3 +65,20 @@ rgb(112, 112, 112)
   background-color: rgb(82, 70, 59);
   color: #fff;
 }
+
+
+/* -------------------*/
+/*- BLOG.HTML STYLES -*/
+/* -------------------*/
+
+.blog-section {
+  max-width: 120rem;
+  background-color: rgb(82, 70, 59);
+  color: #fff;
+}
+
+.blog-posts-section {
+  max-width: 120rem;
+  background-color: rgb(159, 149, 138);
+  color: #fff;
+}
