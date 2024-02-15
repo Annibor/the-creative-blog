@@ -15,3 +15,16 @@ def blog_post_index(request):
         "posts": posts,
     }
     return render(request, "blog/post_index.html", context)
+
+def categories_posts(request, category):
+    """
+    
+    """
+    posts = Post.objects.filter(catagories__name__contains=category
+    ).order_by("-created_on")
+    context = {
+        "catagory": category,
+        "posts": posts,
+    }
+    return render(request, "blog/catagory.html", context)
+
