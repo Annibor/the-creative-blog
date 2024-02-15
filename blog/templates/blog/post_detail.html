@@ -1,17 +1,14 @@
 <!--  blog/templates/blog/detail.html -->
 
 {% block page_title %}
-    <h2>{{ post.title }}</h2>
-{% endblock page_title %}
-
-{% block page_content %}
-    <small>
-        {{ post.created_on.date }} | Categories:
-        {% for category in post.categories.all %}
-            <a href="{% url 'categories_posts' category.name %}">
-                {{ category.name }}
-            </a>
-        {% endfor %}
-    </small>
-    <p>{{ post.body | linebreaks }}</p>
+<h2>{{ post.title }}</h2>
+{% endblock page_title %} {% block page_content %}
+<h4>
+  {{ post.created_on.date }} |
+  <!-- DONT BREAK LINE FIX! -->
+  Categories: {% for category in post.categories.all %}
+  <a href="{% url 'categories_posts' category.name %}"> {{ category.name }} </a>
+  {% endfor %}
+</h4>
+<p>{{ post.body | linebreaks }}</p>
 {% endblock page_content %}
