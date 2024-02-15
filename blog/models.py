@@ -17,4 +17,4 @@ class Comment(models.Model):
     author = models.CharField(max_length=70)
     comment_content = models.TextField(max_length=600)
     created_on = models.DateTimeField(auto_now_add=True)
-    post = models.ForeignKey("Post", on_delete=CASCADE)
+    post = models.ForeignKey("Post", on_delete=models.CASCADE)
