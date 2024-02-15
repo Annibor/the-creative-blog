@@ -38,7 +38,7 @@ def blog_post_detail(request, pk):
         if form.is_valid():
             comment = Comment(
                 author=form.cleaned_data["author"],
-                body=form.cleaned_data["body"],
+                comment_content=form.cleaned_data["comment_content"],
                 post=post,
             )
             comment.save()
