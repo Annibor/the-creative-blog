@@ -1,3 +1,6 @@
+"""
+This module defines the models for the blog application.
+"""
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -10,6 +13,9 @@ class Category(models.Model):
         name: The name of the category.
     """
     name = models.CharField(max_length=40)
+
+    class Meta:
+        verbose_name_plural = "catagories"
 
 
 class Post(models.Model):
