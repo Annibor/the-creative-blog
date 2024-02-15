@@ -36,7 +36,7 @@ class Post(models.Model):
     categories = models.ManyToManyField("Category", related_name="posts")
 
     def __str__(self):
-        return self.title
+        return f"{self.title}"
 
 class Comment(models.Model):
     """
@@ -56,4 +56,4 @@ class Comment(models.Model):
     post = models.ForeignKey("Post", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.author} in '{self.post}'"
+        return f"Comment by {self.author} on post '{self.post}'"
