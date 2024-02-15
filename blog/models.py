@@ -35,6 +35,9 @@ class Post(models.Model):
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField("Category", related_name="posts")
 
+    def __str__(self):
+        return self.title
+
 class Comment(models.Model):
     """
     A model representing a comment.
@@ -51,3 +54,6 @@ class Comment(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     post = models.ForeignKey("Post", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.author} in '{self.post}'"
