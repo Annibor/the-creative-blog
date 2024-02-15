@@ -28,3 +28,12 @@ def categories_posts(request, category):
     }
     return render(request, "blog/catagory.html", context)
 
+def blog_post_detail(request, pk):
+    post = Post.objects.get(pk=pk)
+    comments = Comment.objects.filter(post=post)
+    context = {
+        "post": post,
+        "comments": comments,
+    }
+
+    return render(request, "blog/post_detail.html", context)
