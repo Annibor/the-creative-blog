@@ -10,7 +10,7 @@
   <a href="{% url 'categories_posts' category.name %}"> {{ category.name }} </a>
   {% endfor %}
 </h4>
-<p>{{ post.body | linebreaks }}</p>
+<p>{{ post.post_content | linebreaks }}</p>
 <section>
   <div>
     {% if user.is_authenticated %}
