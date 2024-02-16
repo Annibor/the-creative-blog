@@ -36,7 +36,18 @@ def blog_post_index(request):
 
 def categories_posts(request, category):
     """
+    Display a list of blog posts filtered by category.
+
+    Retrives blog posts from the database that belong to the specified category.
+    Orders the posts by date.
+    Renders the 'blog/category.html' template with the list of filtered posts in the context.
     
+     Parameters:
+        request (HttpRequest): The HTTP request object.
+        category (str): The name of the category to filter by.
+
+    Returns:
+        HttpResponse: Rendered HTML page displaying the filtered list of blog posts.
     """
     posts = Post.objects.filter(categories__name__contains=category
     ).order_by("-created_on")
@@ -46,7 +57,16 @@ def categories_posts(request, category):
     }
     return render(request, "blog/category.html", context)
 
+
 def blog_post_detail(request, pk):
+    """
+     Parameters:
+        request (HttpRequest): The HTTP request object.
+        category (str): The name of the category to filter by.
+
+    Returns:
+        HttpResponse: Rendered HTML page displaying the filtered list of blog posts.
+    """
     post = get_object_or_404(Post, pk=pk)
     form = CommentForm()
 
