@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.contrib import messages
 from .models import Post, Comment
 from .forms import CommentForm
 
@@ -31,24 +32,24 @@ def categories_posts(request, category):
     return render(request, "blog/category.html", context)
 
 def blog_post_detail(request, pk):
-    post = Post.objects.get(pk=pk)
+    post = get_object_or_404(Post, pk=pk)
     form = CommentForm()
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = Comment(
-                author=form.cleaned_data["author"],
-                comment_content=form.cleaned_data["body"],
-                post=post,
-            )
+            comment = form.save(commit=False)
+            comment.author = request.user
+            comment.post = post
+            comment.approved = False
             comment.save()
+            messages.success(request, 'Comment submitted and awaiting approval')
             return HttpResponseRedirect(request.path_info)
-        
-    comments = Comment.objects.filter(post=post)
+
+    comments = post.comments.all().order_by("-created_on")
     context = {
         "post": post,
         "comments": comments,
-        "form": CommentForm(),
+        "comment_form": form,
     }
-
     return render(request, "blog/post_detail.html", context)
