@@ -15,7 +15,7 @@ class Category(models.Model):
     name = models.CharField(max_length=40)
 
     class Meta:
-        verbose_name_plural = "catagories"
+        verbose_name_plural = "categories"
 
 
 class Post(models.Model):
@@ -50,7 +50,7 @@ class Comment(models.Model):
     post: The post to witch the comment belongs.
     """
     author = models.CharField(max_length=70)
-    comment_content = models.TextField(max_length=600)
+    comment_content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
     post = models.ForeignKey("Post", on_delete=models.CASCADE)

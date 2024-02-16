@@ -1,6 +1,7 @@
+from .models import Comment
 from django import forms
 
-class CommentForm(forms.Form):
+class CommentForm(forms.ModelForm):
     author = forms.CharField(
         max_length=70,
         widget=forms.TextInput(
@@ -12,3 +13,6 @@ class CommentForm(forms.Form):
             attrs={'class': 'form-control', 'placeholder':'Leave a comment!'}
         )
     )
+    class Meta:
+        model = Comment
+        fields = ['author', 'body']

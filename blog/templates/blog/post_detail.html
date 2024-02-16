@@ -15,10 +15,10 @@
   <div>
     {% if user.is_authenticated %}
     <h3>Leave a Comment!:</h3>
-    <form method="post" style="margin-top: 1.3em">
+    <form method="post">
       {% csrf_token %}
       <div>{{ form.author}}</div>
-      <div>{{ form.comment_content }}</div>
+      <div>{{ form.body }}</div>
       <div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
@@ -33,7 +33,7 @@
       <p>On {{ comment.created_on.date }} | {{ comment.author }} wrote:</p>
     </div>
     <div>
-      <p>{{ comment.comment_content | linebreaks}}</p>
+      <p>{{ comment.body | linebreaks}}</p>
     </div>
     {% if not comment.approved and comment.author == user %}
     <p>This comment is awaiting approval</p>
