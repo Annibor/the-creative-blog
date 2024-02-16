@@ -1,7 +1,10 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.views import generic
 from django.contrib import messages
+from django.views import generic
+from .models import Post
+from .forms import CommentForm
+
 #from .models import Post, Comment
 #from .forms import CommentForm
 
@@ -13,6 +16,18 @@ from django.contrib import messages
   #  return render(request, 'blog/blog.html')
 
 def blog_post_index(request):
+    """
+    Display a lis tof all blog posts.
+    
+    Retrives all blog posts from database & orders them by date they were written.
+    Renders the 'blog/blog.html' tempalte with the list of posts in the context.
+    
+    Parameters:
+    request (HttpRequest): The HTTP request object.
+    
+    Returns: 
+    HttpResponse: Rendered HTML page displaying the list of blog posts.
+    """
     posts = Post.objects.all().order_by('-created_on')
     context = {
         "posts": posts,
