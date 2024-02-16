@@ -16,3 +16,26 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "categories"
+
+class Post(models.Model):
+    """
+    This model represents a post.
+
+    Attributes:
+    title: The title of the post.
+    post_content: The content of the post.
+    created_on: The date and time when the post was created.
+    last_modifed: The last time the post was updated or changed.
+    categoris: The categoris associated with the post.
+    """
+    title = models.CharField(max_length=250, unique=True)
+    post_content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
+    categories = models.ManyToManyField("Category", related_name="posts")
+
+    class Meta:
+        verbose_name_plural = "Posts"
+
+    def __str__(self):
+        return f"{self.title}"
