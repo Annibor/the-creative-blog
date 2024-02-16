@@ -2,8 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from django.contrib import messages
-from .models import Post, Comment
-from .forms import CommentForm
+#from .models import Post, Comment
+#from .forms import CommentForm
 
 # Create your views here.
 #def blog_page(request):
