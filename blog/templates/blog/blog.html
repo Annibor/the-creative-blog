@@ -7,6 +7,7 @@
   </div>
 </section>
 <section class="blog-posts-section">
+  <p>testing</p>
   {% block posts %} {% for post in posts %}
   <h3>
     <a href="{% url 'blog_post_detail' post.pk %}">{{ post.title }}</a>

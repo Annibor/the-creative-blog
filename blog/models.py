@@ -17,6 +17,13 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "categories"
 
+
+STATUS = (
+    (0,"Draft"),
+    (1,"Publish")
+)
+
+
 class Post(models.Model):
     """
     This model represents a post.
@@ -33,6 +40,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField("Category", related_name="posts")
+    status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         verbose_name_plural = "Posts"
