@@ -4,7 +4,7 @@
 <section>
   <div>
     <h2>{{ post.title }}</h2>
-    <h4>
+    <div>
       {{ post.created_on.date }} |
       <!-- DONT BREAK LINE FIX! -->
       Categories: {% for category in post.categories.all %}
@@ -12,7 +12,7 @@
         {{ category.name }}
       </a>
       {% endfor %}
-    </h4>
+    </div>
     <p>{{ post.post_content | linebreaks }}</p>
   </div>
 </section>
