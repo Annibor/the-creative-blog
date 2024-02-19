@@ -8,9 +8,9 @@
 </section>
 <section class="blog-posts-section">
   {% for post in posts %}
-  <h3>
+  <h2>
     <a href="{% url 'blog_post_detail' post.pk %}">{{ post.title }}</a>
-  </h3>
+  </h2>
   <h4>
     {{ post.created_on.date }} | Categories:
     <!-- to not break FIX-->
