@@ -30,3 +30,26 @@ def user_login(request):
         form = AuthenticationForm()
 
     return render(request, 'login.html', {'form': form})
+
+
+def user_register(request):
+    """
+    Register view for registering new users.
+    """
+    if request.user.is_authenticated():
+        return redirect('home:index')
+    
+    if request.method == 'POST':
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            messages.success(request, 'Your registration was successful!')
+            return redirect('home:index')
+    else:
+        messages.error(
+            request, "Your registration failed. Please put it valid information."
+        )
+        form = RegisterUserForm()
+
+    return render(request, 'register.html', {'form': form})
