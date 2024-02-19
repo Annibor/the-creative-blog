@@ -2,7 +2,7 @@
 <!-- Don't break -->
 {% load crispy_forms_tags %} {% block page_title %}
 <h2>{{ post.title }}</h2>
-{% endblock page_title %} {% block page_content %}
+{% endblock page_title %} {% block content %}
 <h4>
   {{ post.created_on.date }} |
   <!-- DONT BREAK LINE FIX! -->
@@ -14,12 +14,10 @@
 <section>
   <div>
     {% if user.is_authenticated %}
-    
+
     <h3>Leave a Comment!:</h3>
     <form method="post">
-      {% csrf_token %}
-      <div>{{ form.author}}</div>
-      <div>{{ form.comment_content }}</div>
+      {{ comment_form | crispy }} {% csrf_token %}
       <div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
