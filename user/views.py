@@ -6,13 +6,14 @@ from django.contrib import messages
 from .forms import RegisterUserForm
 
 
+
 # Create your views here.
 def user_login(request):
     """
     User login view for logging in users.
     """
     if request.user.is_authenticated:
-        return redirect('home:index')
+        return redirect('home:starting_page')
 
     if request. method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -29,7 +30,7 @@ def user_login(request):
         messages.error(request, "Invalid username or password.")
         form = AuthenticationForm()
 
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'login.html', context={'form': form})
 
 
 def user_register(request):
@@ -37,7 +38,7 @@ def user_register(request):
     Register view for registering new users.
     """
     if request.user.is_authenticated():
-        return redirect('home:index')
+        return redirect("home:starting_page")
     
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
@@ -45,7 +46,7 @@ def user_register(request):
             user = form.save()
             login(request, user)
             messages.success(request, 'Your registration was successful!')
-            return redirect('home:index')
+            return redirect('home:starting_page')
     else:
         messages.error(
             request, "Your registration failed. Please put it valid information."
@@ -61,4 +62,4 @@ def user_logout(request):
     if request.user.is_authenticated:
         logout(request)
         messages.info(request, 'You have been logged out!')
-    return redirect('home:index')
+    return redirect('home:starting_page')
