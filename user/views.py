@@ -60,5 +60,5 @@ def user_logout(request):
     """
     if request.user.is_authenticated:
         logout(request)
-        messages.info(request, f'You have been logged out!')
+        messages.info(request, 'You have been logged out!')
     return redirect('home:index')
