@@ -53,3 +53,12 @@ def user_register(request):
         form = RegisterUserForm()
 
     return render(request, 'register.html', {'form': form})
+
+def user_logout(request):
+    """
+    Logout view for users to log out from website.
+    """
+    if request.user.is_authenticated:
+        logout(request)
+        messages.info(request, f'You have been logged out!')
+    return redirect('home:index')
