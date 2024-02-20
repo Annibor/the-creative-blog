@@ -53,13 +53,17 @@
           <div class="d-flex align-items-center">
             <ul class="navbar-nav align-items-center mx-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a
+                  class="nav-link"
+                  href="{% url 'starting_page' %}"
+                  >Home</a
+                >
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Blog</a>
+                <a class="nav-link" href="{% url 'blog_post_index' %}">Blog</a>
               </li>
               <!-- User authentication links -->
               {% if user.is_authenticated %}
