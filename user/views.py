@@ -30,14 +30,14 @@ def user_login(request):
         messages.error(request, "Invalid username or password.")
         form = AuthenticationForm()
 
-    return render(request, 'login.html', context={'form': form})
+    return render(request, 'user/login.html', context={'form': form})
 
 
 def user_register(request):
     """
     Register view for registering new users.
     """
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return redirect("home:starting_page")
     
     if request.method == 'POST':
@@ -53,7 +53,7 @@ def user_register(request):
         )
         form = RegisterUserForm()
 
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'user/register.html', {'form': form})
 
 def user_logout(request):
     """

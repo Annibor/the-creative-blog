@@ -7,6 +7,13 @@
   </div>
 </section>
 <section class="home-blog-posts">
-  <p>Here will be one blogpost to visitors to see.</p>
+  {% if latest_post %}
+  <div>
+    <h2>{{ latest_post.title }}</h2>
+    <p>{{ latest_post.content }}</p>
+  </div>
+  {% else %}
+  <p>No blog post available</p>
+  {% endif %}
 </section>
 {% endblock %}
